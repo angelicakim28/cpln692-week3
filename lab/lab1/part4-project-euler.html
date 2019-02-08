@@ -32,7 +32,28 @@
 
     ===================== */
 
+    // Multiples of 3 and 5
+    var sum=0;
+    for (var i=0; i<1000; i++) {
+      if (i%3 == 0 || i%5 == 0) {
+        sum += i;
+      }
+    }
+    console.log(sum);
 
+    //Even Fibonacci numbers
+    var accumulator = 0
+    var currentValue = 1
+    var fibonacciSum = 0
+    while (currentValue<4000000){
+      if (currentValue % 2 == 0) {
+        fibonacciSum += currentValue;
+      }
+      var temp = currentValue;
+      currentValue += accumulator;
+      accumulator = temp;
+    };
+    console.log(fibonacciSum);
 
     /* =====================
 

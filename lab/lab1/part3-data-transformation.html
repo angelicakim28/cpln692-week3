@@ -13,8 +13,8 @@
 
     <!--javascript imports-->
     <script src="leaflet.js"></script>
-    <script src="part4-data-clean.js"></script>
-    <script src="part4-data-dirty.js"></script>
+    <script src="part3-data-clean.js"></script>
+    <script src="part3-data-dirty.js"></script>
 
     <script>
 
@@ -64,6 +64,7 @@
     ===================== */
 
     var data = bikeArrayClean;
+    var data = bikeArrayDirty;
 
     /* =====================
 
@@ -72,6 +73,15 @@
     ===================== */
 
 
+    var dataFiltered=[];
+    for (var i = 0; i<data.length; i++) {
+      if (data[i].length == 4) {
+        data[i][3] = parseInt(data[i][3]);
+        if (data[i][3] > 20) {
+          dataFiltered.push(data[i]);
+        }
+      }
+    }
 
     /* =====================
 
@@ -98,7 +108,8 @@
 
     ===================== */
 
-
+    var makeMarkerA = (i) => {return L.marker([i[1],i[0]]).addTo(map).bindPopup(i[2] + ", Number of stations: " + i[3])};
+    var allMarkersA = dataFiltered.map(makeMarkerA);
 
     /* =====================
 

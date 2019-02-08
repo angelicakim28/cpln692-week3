@@ -75,9 +75,59 @@
 
     ===================== */
 
-    L.marker([0, 0]).addTo(map);
-    L.marker([0, 0]).addTo(map);
-    L.marker([0, 0]).addTo(map);
+    // Array of objects
+
+    var restaurantDataObject= [
+        {
+          "LNG":-75.166170,
+          "LAT":39.949445,
+          "LABEL":'Butcher and Singer'
+        },
+        {
+          "LNG":-75.162415,
+          "LAT":39.948263,
+          "LABEL":'Green Eggs Cafe'
+        },
+        {
+          "LNG":-75.194571,
+          "LAT":39.959457,
+          "LABEL":'Chengdu'
+        },
+        {
+          "LNG":-75.146904,
+          "LAT":39.961058,
+          "LABEL":'Yards'
+        },
+        {
+          "LNG":-75.190627,
+          "LAT":39.960040,
+          "LABEL":"Sabrina's Cafe"
+        }
+      ]
+
+    // Array of arrays
+    var restaurantDataArray= [
+    [-75.166170, 39.949445,'Butcher and Singer'],
+    [-75.162415, 39.948263, 'Green Eggs Cafe'],
+    [-75.194571, 39.959457,'Chengdu'],
+    [-75.146904, 39.961058, 'Yards'],
+    [-75.190627, 39.960040, "Sabrina's Cafe"]
+  ]
+
+    //Create markers
+    //    L.marker([39.959457, -75.194571]).addTo(map); //chengdu
+    //    L.marker([39.948263, -75.162415]).addTo(map); // green eggs cafe
+    //    L.marker([39.949589, -75.166122]).addTo(map); //butcher and singer
+
+    //Function on Array of Objects
+    var makeMarkerO = (i) => {return L.marker([i.LAT, i.LNG]).addTo(map).bindPopup(i.LABEL)}
+    var allMarkersO = restaurantDataObject.map(makeMarkerO)
+
+    // Function on Array of Array
+    //L.marker([restaurantDataArray[0][1], restaurantDataArray[0][0]]).addTo(map)
+    var makeMarkerA = (i) => {return L.marker([i[1], i[0]]).addTo(map).bindPopup(i[2])}
+    var allMarkersA = restaurantDataArray.map(makeMarkerA);
+
 
     /* =====================
 
